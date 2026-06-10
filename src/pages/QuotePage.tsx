@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Calculator,
   CheckCircle2,
+  DatabaseZap,
   Factory,
   Hammer,
   Info,
@@ -11,6 +12,7 @@ import {
   Ruler,
   Truck,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 
@@ -181,6 +183,17 @@ export function QuotePage() {
                 margen e impuestos con datos hardcodeados listos para una demo comercial.
               </p>
             </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg">
+                <Link to="/catalogos">
+                  <DatabaseZap />
+                  Ver catálogo
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <a href="#cotizador-form">Cargar medidas</a>
+              </Button>
+            </div>
             <div className="grid gap-3 sm:grid-cols-3">
               <MetricPill icon={<Factory />} label="Costo hora" value={currency(PRICING_ASSUMPTIONS.manufacturingHourCost)} />
               <MetricPill icon={<PackageCheck />} label="Merma" value={percentage(PRICING_ASSUMPTIONS.wasteRate)} />
@@ -225,7 +238,7 @@ export function QuotePage() {
       </section>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
-        <Card className="glass-panel">
+        <Card id="cotizador-form" className="glass-panel">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Calculator className="size-5 text-primary" />
