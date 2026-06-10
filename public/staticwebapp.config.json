@@ -1,0 +1,16 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*", "/*.{css,js,json,png,jpg,jpeg,gif,svg,ico,woff,woff2}"]
+  },
+  "routes": [
+    {
+      "route": "/cotizador",
+      "rewrite": "/index.html"
+    },
+    {
+      "route": "/catalogos",
+      "rewrite": "/index.html"
+    }
+  ]
+}

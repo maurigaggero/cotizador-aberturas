@@ -41,3 +41,20 @@ npx shadcn@latest add button input label select card table dialog form badge sep
 
 - `/cotizador`: formulario principal con cálculo en vivo.
 - `/catalogos`: tablas de supuestos y catálogos hardcodeados.
+
+## Deploy continuo (Azure Static Web Apps)
+
+El workflow `.github/workflows/azure-static-web-apps-nice-grass-0baeeba0f.yml` despliega automáticamente:
+
+- **Producción**: cada push a `main`.
+- **Preview**: cada pull request abierto o actualizado contra `main`.
+
+Configuración del build:
+
+- `app_location`: `/`
+- `output_location`: `dist`
+- `app_build_command`: `npm run build`
+
+El archivo `public/staticwebapp.config.json` habilita el enrutado SPA de React Router en Azure.
+
+Requisito en GitHub: el secreto `AZURE_STATIC_WEB_APPS_API_TOKEN_NICE_GRASS_0BAEEBA0F` debe existir (Azure lo crea al vincular el repositorio).
