@@ -158,7 +158,7 @@ export function CatalogPage() {
       <CatalogSection
         icon={<Truck />}
         title="Envío"
-        description="Costos logísticos simples para demo sin integración con transportes."
+        description="Costos logísticos simples para AMBA, Córdoba Capital y ciudades cercanas."
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {shippingZones.map((item) => (
