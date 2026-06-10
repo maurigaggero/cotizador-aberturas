@@ -80,9 +80,9 @@ const quoteSchema = z.object({
   qualityLineId: z.string().min(1, "Seleccioná una línea"),
   colorId: z.string().min(1, "Seleccioná un color"),
   glassId: z.string().min(1, "Seleccioná un vidrio"),
-  widthCm: z.coerce.number().min(30, "Mínimo 30 cm").max(500, "Máximo 500 cm"),
-  heightCm: z.coerce.number().min(30, "Mínimo 30 cm").max(350, "Máximo 350 cm"),
-  quantity: z.coerce
+  widthCm: z.number().min(30, "Mínimo 30 cm").max(500, "Máximo 500 cm"),
+  heightCm: z.number().min(30, "Mínimo 30 cm").max(350, "Máximo 350 cm"),
+  quantity: z
     .number()
     .int("Debe ser un número entero")
     .min(1, "Mínimo 1 unidad")
@@ -90,7 +90,7 @@ const quoteSchema = z.object({
   shippingZoneId: z.string().min(1, "Seleccioná una zona"),
   includeInstallation: z.boolean(),
   taxProfileId: z.string().min(1, "Seleccioná un perfil impositivo"),
-  marginPercent: z.coerce.number().min(0, "Mínimo 0%").max(60, "Máximo 60%"),
+  marginPercent: z.number().min(0, "Mínimo 0%").max(60, "Máximo 60%"),
 });
 
 type QuoteSchemaValues = z.infer<typeof quoteSchema>;
@@ -306,7 +306,19 @@ export function QuotePage() {
                       <FormItem>
                         <FormLabel>Ancho (cm)</FormLabel>
                         <FormControl>
-                          <Input type="number" min={30} max={500} step={1} {...field} />
+                          <Input
+                            type="number"
+                            min={30}
+                            max={500}
+                            step={1}
+                            name={field.name}
+                            value={field.value ?? ""}
+                            onBlur={field.onBlur}
+                            ref={field.ref}
+                            onChange={(event) =>
+                              field.onChange(event.target.value === "" ? undefined : event.target.valueAsNumber)
+                            }
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -320,7 +332,19 @@ export function QuotePage() {
                       <FormItem>
                         <FormLabel>Alto (cm)</FormLabel>
                         <FormControl>
-                          <Input type="number" min={30} max={350} step={1} {...field} />
+                          <Input
+                            type="number"
+                            min={30}
+                            max={350}
+                            step={1}
+                            name={field.name}
+                            value={field.value ?? ""}
+                            onBlur={field.onBlur}
+                            ref={field.ref}
+                            onChange={(event) =>
+                              field.onChange(event.target.value === "" ? undefined : event.target.valueAsNumber)
+                            }
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -334,7 +358,19 @@ export function QuotePage() {
                       <FormItem>
                         <FormLabel>Cantidad</FormLabel>
                         <FormControl>
-                          <Input type="number" min={1} max={50} step={1} {...field} />
+                          <Input
+                            type="number"
+                            min={1}
+                            max={50}
+                            step={1}
+                            name={field.name}
+                            value={field.value ?? ""}
+                            onBlur={field.onBlur}
+                            ref={field.ref}
+                            onChange={(event) =>
+                              field.onChange(event.target.value === "" ? undefined : event.target.valueAsNumber)
+                            }
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -348,7 +384,19 @@ export function QuotePage() {
                       <FormItem>
                         <FormLabel>Margen comercial (%)</FormLabel>
                         <FormControl>
-                          <Input type="number" min={0} max={60} step={0.5} {...field} />
+                          <Input
+                            type="number"
+                            min={0}
+                            max={60}
+                            step={0.5}
+                            name={field.name}
+                            value={field.value ?? ""}
+                            onBlur={field.onBlur}
+                            ref={field.ref}
+                            onChange={(event) =>
+                              field.onChange(event.target.value === "" ? undefined : event.target.valueAsNumber)
+                            }
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
