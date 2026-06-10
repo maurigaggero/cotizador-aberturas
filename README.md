@@ -46,8 +46,9 @@ npx shadcn@latest add button input label select card table dialog form badge sep
 
 El workflow `.github/workflows/azure-static-web-apps-nice-grass-0baeeba0f.yml` despliega automáticamente:
 
-- **Producción**: cada push a `main`.
-- **Preview**: cada pull request abierto o actualizado contra `main`.
+- **Producción**: cada commit/push a `main`.
+
+No se ejecutan despliegues por pull request.
 
 Configuración del build:
 
